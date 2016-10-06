@@ -27,7 +27,7 @@ Here's the complete list of the plugins enabled:
 
 ## Use it
 
-Baked-it settings, using docker-compose:
+Baked-in settings, using docker-compose:
 
     docker-compose up
 
@@ -42,5 +42,5 @@ If you don't have yet any code to test it, you can already access the management
 
 ## Open management plugin
 
-The management plugin is exposed using the default port: [http://guest:guest@localhost:15672/#/](http://localhost:15672/)
+The management plugin is exposed using the default port: [http://localhost:15672/#/](http://guest:guest@localhost:15672/)
 The management REST API, is exposed there as well.
