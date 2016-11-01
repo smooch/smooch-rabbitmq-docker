@@ -44,3 +44,48 @@ If you don't have yet any code to test it, you can already access the management
 
 The management plugin is exposed using the default port: [http://localhost:15672/#/](http://guest:guest@localhost:15672/)
 The management REST API, is exposed there as well.
+
+## Build it
+
+    docker build . -t smooch/rabbitmq
+
+## Use it
+
+Baked-in settings, using docker-compose:
+
+    docker-compose up
+
+
+Manually if you want to have any other ports, volumes, ....
+
+    docker run -it --rm --hostname local-rabbit -p 15672:15672 -p 5672:5672 smooch/rabbitmq
+
+
+If you don't have yet any code to test it, you can already access the management UI to check that your RabbitMQ service is running.
+
+
+## Open management plugin
+
+The management plugin is exposed using the default port: [http://localhost:15672/#/](http://guest:guest@localhost:15672/)
+The management REST API, is exposed there as well.
+
+
+## See the queues, ready messages and unacknowledged messages
+
+When testing/debugging, you might want to call `rabbitmqctl`. You could simply call it through `docker exec`. 
+
+This sample, run in your host terminal, will refresh every seconds the list of the queues, with for each queue the numbers of ready messages (messages in the queue waiting to be consumed) and unacknowledged messages (messages delivered to a subscriber, which haven't yet acknowledge this message).
+ 
+```
+watch -n 1 -c -d docker exec -it `docker ps | grep smoochrabbitmq | awk '{print $1 }'` rabbitmqctl list_queues name messages_ready messages_unacknowledged
+```
+
+
+
+## Add the visualisation tab to the management API
+If you want to have a look at your current topology, the Visualizer extension of the management UI could be helpful. 
+In order to enable it, you can just turn it on live by running
+
+```
+docker exec -it `docker ps | grep smoochrabbitmq | awk '{print $1 }'` rabbitmq-plugins enable rabbitmq_management_visualiser
+```
