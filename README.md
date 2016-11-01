@@ -20,35 +20,18 @@ Here's the complete list of the plugins enabled:
 - amqp_client
 - rabbitmq_delayed_message_exchange
 - rabbitmq_management_agent
+- rabbitmq_shovel
+- rabbitmq_shovel_management
 - rabbitmq_web_dispatch
 - webmachine
 - mochiweb
 
 
-## Use it
-
-Baked-in settings, using docker-compose:
-
-    docker-compose up
-
-
-Manually if you want to have any other ports, volumes, ....
-
-    docker run -it --rm --hostname local-rabbit -p 15672:15672 -p 5672:5672 smooch/rabbitmq
-
-
-If you don't have yet any code to test it, you can already access the management UI to check that your RabbitMQ service is running.
-
-
-## Open management plugin
-
-The management plugin is exposed using the default port: [http://localhost:15672/#/](http://guest:guest@localhost:15672/)
-The management REST API, is exposed there as well.
-
 ## Build it
 
     docker build . -t smooch/rabbitmq
 
+
 ## Use it
 
 Baked-in settings, using docker-compose:
@@ -67,7 +50,7 @@ If you don't have yet any code to test it, you can already access the management
 ## Open management plugin
 
 The management plugin is exposed using the default port: [http://localhost:15672/#/](http://guest:guest@localhost:15672/)
-The management REST API, is exposed there as well.
+The management REST API is exposed there as well.
 
 
 ## See the queues, ready messages and unacknowledged messages
