@@ -1,7 +1,8 @@
  version: '2'
  services:
    rabbitmq:
-     image: smooch/rabbitmq:latest
+     container_name: "rabbitmq"
+     image: smooch/rabbitmq:3.6.6
      ports:
       - "5672:5672"
       - "15672:15672"

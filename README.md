@@ -7,12 +7,12 @@ This image aims at providing a turnkey image for testing RabbitMQ related projec
 The goal of this image is to offer a convenient way to locally test, start and dispose of a RabbitMQ cluster.
 It is not written with production in mind: we kept the changes minimal and don't focus on performance nor security in this image.
 
-The version used might not be the latest one, our goal is to use this image to test with the same version as the one exposed by CloudAMQP (3.5.7).
+The version used might not be the latest one, our goal is to use this image to test with the same version as the one used by CloudAMQP.
 
 
 ## What's in it
 
-RabbitMQ version: 3.5.7
+RabbitMQ version: 3.5.7 or 3.6.6
 Enabled-plugins: The plugins enabled by default are still there, and this image add and enables the **management** plugin and the **delayed message** plugin.
 
 Here's the complete list of the plugins enabled:
@@ -29,8 +29,8 @@ Here's the complete list of the plugins enabled:
 
 ## Build it
 
-    docker build . -t smooch/rabbitmq
-
+    docker build . -t smooch/rabbitmq:3.5.7 -f Dockerfile.3.5.7
+    docker build . -t smooch/rabbitmq:3.6.6 -f Dockerfile.3.6.6
 
 ## Use it
 
@@ -41,7 +41,7 @@ Baked-in settings, using docker-compose:
 
 Manually if you want to have any other ports, volumes, ....
 
-    docker run -it --rm --hostname local-rabbit -p 15672:15672 -p 5672:5672 smooch/rabbitmq
+    docker run -it --rm --hostname local-rabbit -p 15672:15672 -p 5672:5672 smooch/rabbitmq:3.6.6
 
 
 If you don't have yet any code to test it, you can already access the management UI to check that your RabbitMQ service is running.
